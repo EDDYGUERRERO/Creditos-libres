@@ -1,20 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.ims.compraventa;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
- *
  * @author Silvia
  */
-public class Detalle {
+@Entity
+public class Detalle implements Serializable {
+    
+    @Id
     private int id;
     private String cantidad;
+    @OneToMany
+    @JoinColumn(name ="fk_factura")
     private List <Factura> idFactura;
+    @OneToMany
+    @JoinColumn(name = "fk_producto")
     private List <Producto> idProducto;
     
     public Detalle(){

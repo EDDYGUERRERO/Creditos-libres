@@ -1,11 +1,18 @@
 
 package co.edu.ims.compraventa;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author Silvia
  */
-public class Cliente {
+
+@Entity
+public class Cliente implements Serializable {
+    @Id
     private int id;
     private String nombre;
     private String direccion;

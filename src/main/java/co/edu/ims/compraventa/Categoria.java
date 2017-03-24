@@ -6,10 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-/**
- *
- * @author Silvia
- */
 @Entity
 public class Categoria implements Serializable {
     
@@ -21,8 +17,7 @@ public class Categoria implements Serializable {
         
     }
 
-    public Categoria(int id, String descripcion) {
-        this.id = id;
+    public Categoria( String descripcion) {
         this.descripcion = descripcion;
     }
 

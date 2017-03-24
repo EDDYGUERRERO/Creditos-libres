@@ -1,17 +1,27 @@
 package co.edu.ims.compraventa;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 
 /**
  *
  * @author Silvia
  */
+@Entity
+public class Producto implements Serializable {
 
-
-public class Producto {
+    @Id
     private int id;
     private String descripcion;
     private int valor;
+    @ManyToOne //relacion muchos a uno
+    @JoinColumn(name ="fk_categoria")
     private List <Categoria> idCategoria;
     
     public Producto(){
@@ -56,6 +66,5 @@ public class Producto {
     public void setIdCategoria(List<Categoria> idCategoria) {
         this.idCategoria = idCategoria;
     }
-            
-            
+    
 }

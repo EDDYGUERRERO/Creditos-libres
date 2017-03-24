@@ -8,14 +8,34 @@ import co.edu.ims.compraventa.Factura;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 /**
  *t
  * @author Silvia
  */
 public class AppMain {
+    
 
     public static void main(String[] args) {
+        EntityManagerFactory emf; //creo atributo entity manager factory
+        EntityManager em;  //creo atributo entity manager
+        
+        emf = Persistence.createEntityManagerFactory("compraventaPU"); //Busca el archivo de configuracion de la conexion BD
+        em = emf.createEntityManager();//creo un entity manager
+        
+        // Se crea objeto en memoria (sin persistir aun).
+        Categoria asiar = new Categoria("Jabon");
+        Categoria cocina = new Categoria("Cubiertos");
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        em.persist(asiar); // Se persiste objeto en base de datos.
+        em.persist(cocina);
+        tx.commit();
+        /*
         Categoria aseo = new Categoria(1,"Aseo");
         List<Categoria> categorias=new ArrayList<>();
         categorias.add(aseo);
@@ -49,5 +69,6 @@ public class AppMain {
         System.out.println("Datos del Detalle"+jsonDetalle);
         
     }
-    
+    */
+ }
 }
